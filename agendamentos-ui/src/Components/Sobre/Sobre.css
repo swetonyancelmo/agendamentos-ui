@@ -1,0 +1,56 @@
+.Sobre_Secao {
+  padding: 80px 8%;
+  background-color: #ffffff;
+}
+
+.Sobre_Texto {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+}
+
+.Sobre_Texto span {
+  color: #2563EB;
+  font-weight: bold;
+  letter-spacing: 2px;
+  font-size: 14px;
+}
+
+.Sobre_Texto h2 {
+  font-size: 36px;
+  color: #0f172a;
+  margin: 15px 0;
+}
+
+.Sobre_Texto p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.Sobre_Cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+}
+
+.Sobre_Card {
+  padding: 30px;
+  background: #f8fafc;
+  border-radius: 20px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.Sobre_Card:hover {
+  background: #2563EB;
+  color: white;
+}
+
+.Icone_Sobre {
+  color: #2563EB;
+  margin-bottom: 20px;
+}
+
+.Sobre_Card:hover .Icone_Sobre {
+  color: white;
+}

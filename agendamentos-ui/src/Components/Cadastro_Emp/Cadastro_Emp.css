@@ -1,0 +1,85 @@
+* { 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #E2E8F0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    padding: 20px;
+}
+        
+
+.container {
+    background-color: #0077cc; 
+    width: 100%;
+    margin: 0 auto;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow:10px 10px rgba(8, 8, 8, 0.05);
+    margin-bottom: 30px;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: center;
+    margin-bottom: 10px;
+    color: #E2E8F0;
+}
+
+.form-group label {
+    display: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+
+.btn-enviar {
+    width: 75%;
+    padding: 12px;
+    background-color:rgb(2, 196, 2); 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 50px;
+    
+}
+
+.text-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 15px;
+}
+.logo {
+    width: 190px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.h2 {
+    color: #E2E8F0;
+    font-size: 26px;
+}

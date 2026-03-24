@@ -1,0 +1,94 @@
+.Secao_Servicos {
+  padding: 60px 8%;
+  background-color: #f8fafc; /* Um tom bem clarinho para os cards brancos destacarem */
+}
+
+.Header_Servicos {
+  margin-bottom: 40px;
+}
+
+.Header_Servicos h2 {
+  font-size: 32px;
+  color: #1e293b;
+  font-family: 'Poppins', sans-serif;
+}
+
+.Grid_Servicos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.Card_Agenda {
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.Card_Agenda:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.Capa_Foto {
+  height: 200px;
+  background-size: cover;
+  background-position: center;
+}
+
+.Conteudo_Card {
+  padding: 20px;
+}
+
+.Tag_Categoria {
+  font-size: 12px;
+  background: #eff6ff;
+  color: #2563EB; /* Seu Azul Royal */
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-weight: bold;
+}
+
+.Conteudo_Card h3 {
+  margin: 15px 0 5px 0;
+  font-size: 18px;
+  color: #0f172a;
+}
+
+.Nome_Empresa {
+  color: #64748b;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.Footer_Card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 15px;
+}
+
+.Preco_Txt {
+  font-weight: 800;
+  color: #1e293b;
+  font-size: 18px;
+}
+
+.Btn_Reservar {
+  background-color: #2563EB; /* Azul Royal */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.Btn_Reservar:hover {
+  background-color: #1d4ed8;
+}

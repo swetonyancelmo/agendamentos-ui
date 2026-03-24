@@ -1,0 +1,108 @@
+.Marketing_Secao {
+  padding: 80px 8%;
+  background-color: #f8fafc; /* Um cinza bem leve para destacar os cards */
+}
+
+.Marketing_Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.Marketing_Card {
+  height: 500px;
+  border-radius: 24px;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end; /* Conteúdo na parte inferior */
+  padding: 40px;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.Marketing_Card:hover {
+  transform: translateY(-5px);
+}
+
+/* Sombra preta no fundo para o texto branco aparecer */
+.Marketing_Card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.1));
+  z-index: 1;
+}
+
+.Marketing_Conteudo {
+  position: relative;
+  z-index: 2; /* Garante que o texto fique acima da sombra */
+  color: white;
+}
+
+.Marketing_Conteudo span {
+  color: #2563EB; /* Azul Royal */
+  font-weight: bold;
+  letter-spacing: 1.5px;
+  font-size: 14px;
+}
+
+.Marketing_Conteudo h2 {
+  font-size: 32px;
+  margin: 10px 0 15px;
+  line-height: 1.2;
+}
+
+.Marketing_Conteudo p {
+  color: #e2e8f0; /* Branco acinzentado */
+  margin-bottom: 30px;
+  font-size: 16px;
+  max-width: 90%;
+}
+
+.Btn_Marketing {
+  padding: 14px 28px;
+  background-color: #2563EB; /* Azul Cliente */
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.Btn_Marketing:hover {
+  background-color: #1d4ed8;
+}
+
+/* Estilo específico para o botão da Empresa */
+.Btn_Empresa {
+  background-color: #2563EB; /* Azul Empresa */
+}
+
+.Btn_Empresa:hover {
+  background-color: #1d4ed8;
+}
+
+/* FOTOS DE FUNDO (Troque pelas URLs reais depois se quiser) */
+.Foco_Cliente {
+  /* Foto de uma manicure/salão ou alguém relaxando */
+  background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=1000');
+}
+
+.Foco_Empresa {
+  /* Foto de negócios/tecnologia (A que você já usava no Print 331) */
+  background-image: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1000');
+}
+
+/* Responsividade para celular */
+@media (max-width: 950px) {
+  .Marketing_Container {
+    grid-template-columns: 1fr;
+  }
+  .Marketing_Card {
+    height: 400px;
+  }
+}

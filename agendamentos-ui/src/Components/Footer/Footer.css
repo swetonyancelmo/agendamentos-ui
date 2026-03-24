@@ -1,0 +1,29 @@
+.Footer_Principal {
+  background-color: #000000; /* Nosso Preto padrão */
+  color: white;
+  padding: 60px 8% 20px;
+}
+
+.Footer_Grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  border-bottom: 1px solid #333;
+  padding-bottom: 40px;
+}
+
+.Footer_Info h3 span { color: #2563EB; }
+
+.Footer_Links ul { list-style: none; padding: 0; }
+.Footer_Links a { color: #64748b; text-decoration: none; line-height: 2; transition: 0.3s; }
+.Footer_Links a:hover { color: #2563EB; }
+
+.Social_Icons { display: flex; gap: 20px; margin-top: 15px; color: #64748b; }
+.Social_Icons svg:hover { color: #2563EB; cursor: pointer; }
+
+.Footer_Copy {
+  text-align: center;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #475569;
+}
