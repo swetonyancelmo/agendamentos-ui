@@ -1,0 +1,36 @@
+:root {
+  /* Modo Claro - (Mantemos o mesmo) */
+  --bg-site: #d0e7ff; 
+  --text-site: #003366;
+  --card-bg: #ffffff;
+  --card-border: #e9ecef;
+}
+
+[data-mantine-color-scheme='dark'] {
+  /* 🌙 Modo Noturno "Meia-Noite" - Nada de preto chapado! */
+  --bg-site: #0a111f; /* Um azul extremamente escuro e profundo */
+  --text-site: #C1C2C5; /* Cinza claro para não agredir a vista */
+  --card-bg: #141b2b; /* Card um pouco mais claro que o fundo (dá profundidade) */
+  --card-border: #1e2a41; /* Borda sutil que destaca o card */
+  
+  /* Cor primária (o azul dos botões) fica um pouco mais fria no escuro */
+  --mantine-color-blue-filled: #1971c2; 
+}
+
+.app-container {
+  min-height: 100vh;
+  background-color: var(--bg-site); /* <--- Agora ele usa o azul meia-noite! */
+  color: var(--text-site);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Garante que os cards do Mantine obedeçam as novas variáveis */
+[data-mantine-color-scheme='dark'] .mantine-Card {
+  background-color: var(--card-bg) !important;
+  border-color: var(--card-border) !important;
+}
+
+/* Ajuste sutil na neve para o modo escuro */
+[data-mantine-color-scheme='dark'] .snow {
+  opacity: 0.6; /* Deixa os flocos um pouco mais transparentes */
+}

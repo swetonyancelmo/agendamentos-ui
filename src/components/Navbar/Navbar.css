@@ -1,0 +1,84 @@
+#Nav {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    position: relative; 
+    width: 100%;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    padding: 10px 30px;
+    
+    /* Usando as variáveis para o Modo Noturno */
+    background: var(--bg-footer); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 50px; 
+    border: 1px solid var(--border-footer);
+    
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    transition: all 0.4s ease;
+}
+
+/* 🌙 MANTEMOS O AJUSTE PARA MODO ESCURO */
+[data-mantine-color-scheme='dark'] nav {
+    background: rgba(20, 27, 43, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: none;
+}
+
+.logo img {
+    height: 45px;
+    max-height: 60px;
+    display: block;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+}
+
+.nav-links li {
+    z-index: 2;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: var(--text-site); /* <--- O texto agora segue o tema */
+    font-weight: bold;
+    padding: 12px 25px;
+    display: block;
+    transition: color 0.4s ease;
+}
+
+.nav-links li a:hover {
+    color: #fff;
+}
+
+/* 🚀 INDICADOR (A PÍLULA AZUL) */
+.indicator {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    background: linear-gradient(135deg, #007bff, #002bec);
+    border-radius: 50px;
+    z-index: 1;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); 
+    box-shadow: 0 5px 15px rgba(0, 43, 236, 0.4);
+    pointer-events: none;
+}
+
+/* Ajuste do indicador no modo escuro para brilhar um pouco mais */
+[data-mantine-color-scheme='dark'] .indicator {
+    background: linear-gradient(135deg, #339af0, #1971c2);
+    box-shadow: 0 0 15px rgba(25, 113, 194, 0.3);
+}
