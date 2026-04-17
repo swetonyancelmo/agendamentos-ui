@@ -1,16 +1,39 @@
-# React + Vite
+# ❄️ Mais Climatização - Sistema de Agendamentos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de gestão de serviços de climatização desenvolvido para a **Agência Vanzoff**. Esta aplicação permite que os clientes solicitem serviços de instalação, manutenção e reparo técnico de ar-condicionado de forma inteligente e eficiente.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Dashboard do Cliente:** Monitorização de todos os pedidos realizados.
+- **Agendamento Inteligente:** Escolha de serviço, data e horário com validação.
+- **Interface Moderna:** Desenvolvida com React e Mantine UI para uma experiência fluida.
+- **Efeito Visual:** Sistema de partículas (neve) que reflete a identidade visual da marca.
 
-## React Compiler
+## 🛠️ Tecnologias Utilizadas
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Front-end:
+- [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- [Mantine UI](https://mantine.dev/) (Componentes de interface)
+- [Tabler Icons](https://tabler-icons.io/) (Ícones)
+- [Axios](https://axios-http.com/) (Consumo de API)
+- [React Router Dom](https://reactrouter.com/) (Navegação)
 
-## Expanding the ESLint configuration
+### Back-end:
+- [Java 25](https://www.oracle.com/java/) + [Spring Boot 4](https://spring.io/projects/spring-boot)
+- [Spring Security](https://spring.io/projects/spring-security) (Autenticação e Proteção)
+- [PostgreSQL](https://www.postgresql.org/) (Base de dados)
+- [Docker](https://www.docker.com/) (Contentorização do banco)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Como executar o projeto
+
+### Pré-requisitos:
+- Node.js instalado
+- Java JDK 25
+- Docker rodando (para a base de dados)
+
+### Passos:
+1. Clone o repositório.
+2. No terminal da pasta do front-end (`climatização`):
+   ```bash
+   npm install
+   npm run dev
