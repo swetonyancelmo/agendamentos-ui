@@ -11,7 +11,7 @@
 .snowflake {
     position: absolute;
     top: -10%;
-    color: #ffffff;
+    color: #1313d5;
     user-select: none;
     filter: blur(0.5px);
     animation: quedaneve linear infinite;

@@ -1,0 +1,101 @@
+
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #E2E8F0;
+    margin: 0;
+    padding: 0;
+    display: flex; 
+    justify-content: center;
+    min-height: 100vh;
+    overflow-x: hidden; 
+}
+
+.container {
+    background-color: #ffffff; 
+    width: 100%;
+    margin: 0 auto;
+    max-width: 450px;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.05);
+    border-top: 6px solid #0077cc;
+    border-bottom: 6px solid #0077cc;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.form-group label {
+    display: center;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+    margin-top: 5px;
+}
+
+/* Botão com Azul Royal da planilha */
+.btn-enviar {
+    width: 75%;
+    padding: 12px;
+    background-color: #2563EB; /* Valor Código: 2563EB  */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 50px;
+    
+}
+
+.text-footer {
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    margin-top: 15px;
+}
+.logo {
+    width: 190px;
+    margin: 0 auto;
+    justify-content: center;
+}
+.h2 {
+    color: #000000;
+    font-size: 26px;
+    
+}
+
+.cadastro-container {
+  background-color:transparent; 
+  min-height: 100vh;
+  width: 100%;
+  max-width: 500px; 
+  position: relative;
+  z-index: 10; 
+  margin: 20px auto;
+  border-radius: 8px; 
+  padding: 30px;
+}

@@ -1,0 +1,80 @@
+/* Container principal */
+.selection-container {
+    display: flex;
+    gap: 28px;
+    justify-content: center;
+    padding: 25px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:  rgba(255, 255, 255, 0.1);
+    margin: 25px;
+}
+
+/* Estilo dos Cards */
+.selection-card {
+    background: rgba(235, 239, 240, 0.923); /* Fundo branco bem clarinho */
+    backdrop-filter: blur(10px); /* O efeito de desfoque no fundo */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+    box-shadow: #1e293b 0px 5px 20px -5px;
+}
+
+.selection-card:hover {
+    transform: translateY(-10px); /* O card sobe um pouquinho quando passa o mouse */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    background-color: rgba(187, 234, 249, 0.698);
+}
+
+/* Tipografia */
+h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+    color: #201e3b;
+}
+
+p {
+    font-size: 0.95rem;
+    color: #1e2022;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* Botões */
+button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 10px;
+    transition: opacity 0.2s;
+}
+
+.btn-primary {
+    color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn-business {
+    color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.client-btn { background-color:  rgb(30, 58, 138); }
+.company-btn { background-color:rgba(151, 151, 170, 0.487);}
+
+.btn-secondary {
+    background-color: rgb(30, 58, 138);
+    color:  rgb(255, 255, 255);
+    border: 1px solid #e2e8f0;
+}
+
+
+
