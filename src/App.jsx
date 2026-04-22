@@ -34,7 +34,7 @@ function GerenciadorNavbar() {
   const location = useLocation();
   
   // Lista de rotas que devem usar a Navbar de Login
-  const rotasDeLogin = ['/','/Seleção','/login-empresa', '/login-cliente', '/cadastro-empresa', '/cadastro-cliente'];
+  const rotasDeLogin = ['/','/login-empresa', '/login-cliente', '/cadastro-empresa', '/cadastro-cliente','/seleção'];
   
   if (rotasDeLogin.includes(location.pathname)) {
     return <NavbarLogin />;
@@ -51,7 +51,7 @@ function App() {
       <BrowserRouter>
         <div className="app-container">
           {exibirNeve && <SnowEffect />}
-          
+          <title>Mais Climatização - Agendamento de Serviços de Ar-Condicionado</title>
           {/* Substituímos a <Navbar /> fixa pelo nosso novo Gerenciador */}
           <GerenciadorNavbar />
           

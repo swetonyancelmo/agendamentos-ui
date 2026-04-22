@@ -4,13 +4,13 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background-color: #eef2f7; /* Tom de azul acinzentado do fundo */
+  background-color:transparent; /* Tom de azul acinzentado do fundo */
 }
 
 /* O Card em si */
 .login-card {
   display: flex; /* Faz a imagem e o form ficarem lado a lado */
-  background: white;
+  background:transparent;
   border-radius: 15px;
   overflow: hidden; /* Garante que a imagem siga o arredondamento do card */
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);

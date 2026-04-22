@@ -5,270 +5,145 @@ import tecnico from "../assets/tecnico.jpeg";
 
 function LoginEmpresa() {
   const navigate = useNavigate();
-  const [form, setForm] = useState({ nome: "", email: "", password: "" });
-  const [loading, setLoading] = useState(false);
-  const [erro, setErro] = useState("");
-
-  function handleChange(e) {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-  }
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setErro("");
-    setLoading(true);
-
-    try {
-      const response = await fetch("http://localhost:8080/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: form.email,
-          password: form.password,
-        }),
-      });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        setErro(data.message || "Email ou senha inválidos.");
-        return;
-      }
-
-      localStorage.setItem("token", data.token);
-      const payload = JSON.parse(atob(data.token.split(".")[1]));
-      if (payload.businessId) {
-        localStorage.setItem("businessId", payload.businessId);
-      }
-
-      navigate("/home");
-    } catch {
-      setErro("Erro de conexão. Verifique se o servidor está rodando.");
-    } finally {
-      setLoading(false);
-    }
-  }
+  const [form, setForm] = useState({ email: "", password: "" });
 
   return (
-    <div
-      style={{
-        minHeight: "100vh",
-        width: "100%",
-        backgroundColor: "#d1e9ff",
+    // Adicionei a classe login-wrapper para pegar o fundo do site
+    <div className="login-wrapper" style={{
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "1rem"
+    }}>
+      <div style={{
         display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        padding: "1rem",
-        boxSizing: "border-box",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          maxWidth: "900px",
-          backgroundColor: "#ffffff",
-          borderRadius: "24px",
-          overflow: "hidden",
-          minHeight: "520px",
-          boxShadow: "0 20px 60px rgba(0,0,0,0.12)",
-        }}
-      >
-        {/* LADO ESQUERDO — Imagem */}
-        <div
-          style={{
-            width: "45%",
+        width: "100%",
+        maxWidth: "900px",
+        backgroundColor: "var(--bg-card)",
+        borderRadius: "24px",
+        overflow: "hidden",
+        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.15)",
+        transition: "all 0.4s ease"
+      }}>
+        
+        {/* Lado da Imagem (Aparece em telas maiores) */}
+        <div className="hidden-mobile" style={{ 
+            width: "45%", 
             position: "relative",
-            flexShrink: 0,
-          }}
-        >
-          <img
-            src={tecnico}
-            alt="Técnico de refrigeração"
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
+            display: window.innerWidth > 768 ? "block" : "none" 
+        }}>
+           <img 
+            src={tecnico} 
+            style={{ 
+                width: "100%", 
+                height: "100%", 
+                objectFit: "cover",
+                filter: "var(--mantine-color-scheme) === 'dark' ? 'brightness(0.7)' : 'none'" 
+            }} 
+            alt="tecnico" 
+           />
         </div>
 
-        {/* LADO DIREITO — Formulário */}
-        <div
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            padding: "3rem 2.5rem",
-            backgroundColor: "#ffffff",
-          }}
-        >
-          {/* Logo */}
-          <div style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-            <img
-              src={logo}
-              alt="Logo Mais Climatização"
-              style={{ width: "180px", objectFit: "contain" }}
-            />
+        {/* Lado do Formulário */}
+        <div style={{
+          flex: 1,
+          padding: "3rem",
+          backgroundColor: "var(--bg-form-side)",
+          color: "var(--text-main)",
+          transition: "background-color 0.4s ease"
+        }}>
+          <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+            <img src={logo} style={{ width: "160px" }} alt="logo" />
           </div>
 
-          <h1
-            style={{
-              fontSize: "24px",
-              fontWeight: "700",
-              color: "#1a1a2e",
-              margin: "0 0 4px 0",
-            }}
-          >
-            Login
-          </h1>
-          <p
-            style={{
-              fontSize: "13px",
-              color: "#6b7280",
-              margin: "0 0 1.5rem 0",
-            }}
-          >
+          <h1 style={{ fontSize: "24px", fontWeight: "700", marginBottom: "0.5rem" }}>Login</h1>
+          <p style={{ color: "var(--text-sub)", fontSize: "14px", marginBottom: "2rem" }}>
             Entre com suas credenciais para acessar o painel
           </p>
 
-          {/* Campos */}
-          <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <label
-                style={{
-                  fontSize: "11px",
-                  fontWeight: "700",
-                  color: "#374151",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                }}
-              >
-               
-              </label>
-             
-            </div>
-
-            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <label
-                style={{
-                  fontSize: "11px",
-                  fontWeight: "700",
-                  color: "#374151",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                E-mail
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="exemplo@email.com"
-                value={form.email}
-                onChange={handleChange}
-                required
+          <form style={{ display: "flex", flexDirection: "column", gap: "1.2rem" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <label style={{ fontSize: "11px", fontWeight: "bold", opacity: 0.8 }}>E-MAIL</label>
+              <input 
+                type="email" 
+                placeholder="exemplo@clima.com"
                 style={{
                   padding: "12px 16px",
-                  border: "1px solid #e5e7eb",
                   borderRadius: "12px",
-                  fontSize: "14px",
+                  border: "1px solid var(--input-border)",
+                  backgroundColor: "var(--input-bg)",
+                  color: "var(--text-main)",
                   outline: "none",
-                  width: "100%",
-                  boxSizing: "border-box",
-                  fontFamily: "inherit",
+                  transition: "all 0.3s ease",
+                  boxShadow: "inset 0 1px 3px rgba(60, 63, 203, 0.5)",
                 }}
               />
             </div>
 
-            <div style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
-              <label
-                style={{
-                  fontSize: "11px",
-                  fontWeight: "700",
-                  color: "#374151",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.5px",
-                }}
-              >
-                Senha
-              </label>
-              <input
-                type="password"
-                name="password"
-                placeholder="insira sua senha"
-                value={form.password}
-                onChange={handleChange}
-                required
+            <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+              <label style={{ fontSize: "11px", fontWeight: "bold", opacity: 0.8 }}>SENHA</label>
+              <input 
+                type="password" 
+                placeholder="Insira sua senha"
                 style={{
                   padding: "12px 16px",
-                  border: "1px solid #e5e7eb",
                   borderRadius: "12px",
-                  fontSize: "14px",
+                  border: "1px solid var(--input-border)",
+                  backgroundColor: "var(--input-bg)",
+                  color: "var(--text-main)",
                   outline: "none",
-                  width: "100%",
-                  boxSizing: "border-box",
-                  fontFamily: "inherit",
+                  boxShadow: "inset 0 1px 3px rgba(60, 63, 203, 0.5)",
                 }}
               />
             </div>
 
-            {erro && (
-              <p style={{ color: "#ef4444", fontSize: "12px", margin: "0" }}>
-                {erro}
-              </p>
-            )}
-
-            <button
-              onClick={handleSubmit}
-              disabled={loading}
-              style={{
-                marginTop: "8px",
-                backgroundColor: loading ? "#93c5fd" : "#2563eb",
-                color: "#ffffff",
-                fontWeight: "700",
-                fontSize: "14px",
-                letterSpacing: "1px",
-                padding: "14px",
-                borderRadius: "12px",
-                border: "none",
-                cursor: loading ? "not-allowed" : "pointer",
-                width: "100%",
-                fontFamily: "inherit",
-              }}
-            >
-              {loading ? "CARREGANDO..." : "ENTRAR"}
+            <button style={{
+              marginTop: "1rem",
+              padding: "14px",
+              backgroundColor: "var(--btn-primary)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "12px",
+              fontWeight: "bold",
+              fontSize: "14px",
+              letterSpacing: "0.5px",
+              cursor: "pointer",
+              transition: "transform 0.2s active"
+            }}>
+              ENTRAR
             </button>
-          </div>
-
-          <div style={{ marginTop: "1.5rem", textAlign: "center" }}>
-            <p style={{ fontSize: "12px", color: "#6b7280", margin: "6px 0" }}>
+          </form>
+              {/* Link cadastro */}
+            <p className="text-center text-sm text-gray-500 mt-2">
               Não tem uma conta?{" "}
               <Link
                 to="/cadastro-empresa"
-                style={{ color: "#2563eb", fontWeight: "700", textDecoration: "none" }}
+                className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200"
               >
                 Cadastre-se aqui
               </Link>
             </p>
-            <p style={{ fontSize: "12px", color: "#6b7280", margin: "6px 0" }}>
+
+            {/* Divisor */}
+            <div className="flex items-center gap-3 my-1">
+              <div className="flex-1 h-px bg-gray-200" />
+              <span className="text-xs text-gray-400">ou</span>
+              <div className="flex-1 h-px bg-gray-200" />
+            </div>
+
+            {/* Link cliente */}
+            <p className="text-center text-sm text-gray-500"/>
               É um cliente?{" "}
               <Link
                 to="/login-cliente"
-                style={{ color: "#2563eb", fontWeight: "700", textDecoration: "none" }}
+                className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200"
               >
                 Acesse aqui
               </Link>
-            </p>
+         
           </div>
         </div>
       </div>
-    </div>
   );
 }
 

@@ -13,10 +13,10 @@ function ClienteEmpresa() {
         <p>Agende serviços de ar-condicionado com profissionais qualificados da sua região.</p>
 
          <Link to="/login-cliente">   
-        <button class="btn-primary client-btn">Entrar como Cliente →</button>
+        <button class="btn-primary">Entrar como Cliente →</button>
         </Link>
         <Link to="/cadastro-cliente">
-        <button class="btn-secondary">Cadastra-se como Cliente</button>
+        <button class="client-btn">Cadastra-se como Cliente</button>
         </Link>
     </div>
 
@@ -28,7 +28,7 @@ function ClienteEmpresa() {
         <p>Gerencie seus agendamentos, serviços e disponibilidade em uma única plataforma.</p>
         
         <Link to="/login-empresa">
-        <button class="btn-business company-btn">Entrar como Empresa →</button>
+        <button class="btn-business">Entrar como Empresa →</button>
         </Link>
 
         <Link to="/cadastro-empresa">
