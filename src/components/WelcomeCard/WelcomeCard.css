@@ -2,28 +2,32 @@
     text-align: center;
     z-index: 10;
     padding: 40px;
-    background: rgba(255, 255, 255, 0.4);
+    /* Usa a variável de fundo de card que criamos */
+    background: var(--card-bg); 
     backdrop-filter: blur(8px); 
     border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--card-border);
     max-width: 700px;
+    transition: all 0.4s ease;
 }
 
 .card-boas-vindas h1 {
-    color: #003366;
+    /* 🔵 MUDANÇA: Agora segue a cor dinâmica (Azul claro no Dark / Marinho no Light) */
+    color: var(--text-clima-claro); 
     font-size: 38px;
     margin-bottom: 15px;
 }
 
 .card-boas-vindas p {
-    color: #334155;
+    /* ⚪ MUDANÇA: Segue a cor de texto do tema */
+    color: var(--text-site);
     font-size: 18px;
     margin-bottom: 25px;
 }
 
 .btn-acao-pilula {
     position: relative;
-    background-color: #003366;
+    background-color: #003366; /* Cor base do botão */
     color: white;
     border: none;
     padding: 16px 45px;
@@ -36,10 +40,14 @@
     z-index: 1;
 }
 
+/* No modo noturno, podemos deixar o botão com um azul um pouco mais vivo se quiser */
+[data-mantine-color-scheme='dark'] .btn-acao-pilula {
+    background-color: #1971c2;
+}
+
 .btn-acao-pilula span {
     position: relative;
     z-index: 3;
-    
 }
 
 .btn-indicator {
@@ -56,11 +64,35 @@
 }
 
 .btn-acao-pilula:hover .btn-indicator {
-    width: 400px; /* Aumentei um pouco para garantir que cubra tudo */
-    height: 400px;
+    width: 650px;
+    height: 650px;
 }
 
 .btn-acao-pilula:hover {
     box-shadow: 0 10px 25px rgba(0, 43, 236, 0.4);
     transform: scale(1.05);
+}
+
+/* --- SEÇÃO DE SERVIÇOS (TITULOS E TEXTOS) --- */
+
+/* Força o título da seção de serviços a usar a cor de destaque */
+.mantine-Title-root {
+    color: var(--text-clima-claro) !important;
+    transition: color 0.4s ease;
+}
+
+/* Garante que os títulos dentro dos cards de serviço também fiquem azuis */
+[data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-Text-root[data-fw="700"] {
+    color: var(--text-clima-claro) !important;
+}
+
+/* Estilo para mobile no Welcome Card */
+@media (max-width: 768px) {
+    .card-boas-vindas {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+    .card-boas-vindas h1 {
+        font-size: 28px;
+    }
 }
