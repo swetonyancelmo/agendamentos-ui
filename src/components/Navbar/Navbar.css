@@ -1,9 +1,10 @@
 #Nav {
-    padding: 20px;
+    padding: 0; /* Topo 0, Laterais e Baixo mantidos */
+    margin: 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     position: relative; 
-    width: 100%;
     z-index: 1000;
 }
 
