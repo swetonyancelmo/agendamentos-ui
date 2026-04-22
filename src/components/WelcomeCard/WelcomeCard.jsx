@@ -81,7 +81,7 @@ const WelcomeCard = () => {
       </Container>
 
       <Container size="lg" py="100px">
-        <Title order={2} ta="center" mb="50px" c="#003366" style={{ fontSize: '2rem' }}>
+        <Title order={2} ta="center" mb="50px" c="var(--text-clima-claro)" style={{ fontSize: '2rem' }}>
           Nossos Serviços Disponíveis
         </Title>
 
@@ -98,7 +98,7 @@ const WelcomeCard = () => {
               </Group>
 
               <Text size="sm" c="dimmed" mb="lg" style={{ minHeight: '45px' }}>{servico.description}</Text>
-              <Text fw={800} size="xl" color="#003366" mb="md">{servico.price}</Text>
+              <Text fw={800} size="xl" color="var(--text-clima-claro)" mb="md">{servico.price}</Text>
 
               <Group gap="xs" grow>
                 <button 

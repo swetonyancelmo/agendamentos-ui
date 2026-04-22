@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-import { Container, Card, Title, Text, Select, Button, Stack, Group, Textarea, Box, ActionIcon } from '@mantine/core';
+import React, { useState, useRef, useEffect } from 'react';
+import { Container, Card, Title, Text, Select, Stack, Group, Box, ActionIcon, Loader, Textarea } from '@mantine/core';
 import { DateInput, TimeInput } from '@mantine/dates';
 import { IconCalendarPlus, IconCheck, IconClock } from '@tabler/icons-react';
 import api from '../services/api';
@@ -8,55 +8,63 @@ import { useNavigate } from 'react-router-dom';
 const Agendar = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const timeInputRef = useRef(null); // Referência para abrir o seletor de hora ao clicar no ícone
+  const [fetchingServices, setFetchingServices] = useState(true);
+  const [servicosDoBanco, setServicosDoBanco] = useState([]); 
+  const timeInputRef = useRef(null);
 
   const [form, setForm] = useState({
-    cliente: 'Abelardo',
-    servico: '',
+    servicoId: '',
     data: null,
-    horario: '', // Novo campo para a hora
-    descricao: '',
+    horario: '',
+    descricao: '', // <-- Descrição mantida aqui
   });
+
+  // 1. Carrega os serviços reais do Back-end
+  useEffect(() => {
+    const carregarServicos = async () => {
+      try {
+        const response = await api.get('/services'); 
+        setServicosDoBanco(response.data);
+      } catch (error) {
+        console.error("Erro ao carregar serviços:", error);
+      } finally {
+        setFetchingServices(false);
+      }
+    };
+    carregarServicos();
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    if (!form.data || !form.horario) {
-      alert("Por favor, selecione a data e o horário.");
+    if (!form.data || !form.horario || !form.servicoId) {
+      alert("Por favor, selecione o serviço, a data e o horário.");
       return;
     }
 
     setLoading(true);
 
     try {
-      const valorFinal = form.servico === 'Instalação' ? 250.0 : 150.0;
-      const dataObjeto = new Date(form.data);
-      const dataFormatada = dataObjeto.toISOString().split('T')[0];
-
+      const dataFormatada = form.data.toISOString().split('T')[0];
+      
+      // Monta o payload respeitando o DTO do colega + a descrição
       const payload = {
         businessId: "b75ea5d5-28a6-4059-b8da-96c2dc9437e8", 
-        serviceId: "e1f0f996-93ed-4ea5-9632-66386c5d6e9c", 
-        
-        // Envia a data e a hora escolhida no formulário
-        appointmentDate: dataFormatada,
-        startTime: form.horario, 
-        
-        cliente: form.cliente,
-        servico: form.servico,
-        descricao: form.descricao || "",
-        valor: valorFinal,
-        status: 'PENDING'
+        serviceId: form.servicoId,                          
+        appointmentDate: dataFormatada,                     
+        startTime: form.horario,
+        descricao: form.descricao // Enviamos a descrição mesmo assim
       };
 
-      console.log("Enviando para o back-end:", payload);
+      console.log("Enviando para o Back-end:", payload);
 
       await api.post('/appointments', payload);
 
-      alert("Solicitação enviada com sucesso!");
+      alert("Agendamento realizado com sucesso!");
       navigate('/dashboard');
     } catch (error) {
-      console.error("Erro:", error.response || error);
-      alert(error.response?.status === 403 ? "Erro 403: Verifique permissões." : "Erro ao conectar com o servidor.");
+      console.error("Erro no agendamento:", error.response?.data || error);
+      alert(error.response?.data?.message || "Erro ao conectar com o servidor.");
     } finally {
       setLoading(false);
     }
@@ -64,47 +72,56 @@ const Agendar = () => {
 
   return (
     <Container size="sm" py="xl" style={{ marginTop: '50px', minHeight: '80vh' }}>
-      <Card shadow="xl" padding="xl" radius="lg" withBorder>
+      <Card shadow="xl" padding="xl" radius="lg" withBorder style={{ backgroundColor: 'var(--card-bg)', borderColor: 'var(--card-border)' }}>
         <Stack gap="md">
           <Group justify="space-between">
             <Box>
-              <Title order={2} c="#003366">Solicitar Serviço</Title>
-              <Text size="sm" c="dimmed">Escolha o dia e horário para sua climatização</Text>
+              <Title order={2} style={{ color: 'var(--text-clima-claro)' }}>Solicitar Serviço</Title>
+              <Text size="sm" style={{ color: 'var(--text-site)', opacity: 0.7 }}>
+                Informe os detalhes para nossa visita técnica
+              </Text>
             </Box>
-            <IconCalendarPlus size={35} color="#228be6" />
+            <IconCalendarPlus size={35} color="var(--text-clima-claro)" />
           </Group>
 
           <form onSubmit={handleSubmit}>
             <Stack gap="md">
+              
+              {/* Select de Serviços */}
               <Select
                 label="Qual serviço você precisa?"
-                placeholder="Selecione uma opção"
-                data={['Instalação', 'Manutenção', 'Reparo Técnico']}
+                placeholder={fetchingServices ? "Buscando serviços..." : "Selecione uma opção"}
+                disabled={fetchingServices}
+                rightSection={fetchingServices ? <Loader size="xs" /> : null}
+                data={servicosDoBanco.map(s => ({ value: s.id, label: s.title }))}
                 required
-                value={form.servico}
-                onChange={(val) => setForm({ ...form, servico: val })}
+                value={form.servicoId}
+                onChange={(val) => setForm({ ...form, servicoId: val })}
+                styles={{ label: { color: 'var(--text-site)' } }}
               />
 
               <Group grow>
-                {/* Campo de Data */}
+                {/* Data */}
                 <DateInput
                   value={form.data}
                   onChange={(val) => setForm({ ...form, data: val })}
                   label="Data da Visita"
-                  placeholder="Selecione o dia"
+                  placeholder="Dia do atendimento"
                   minDate={new Date()}
                   required
                   locale="pt-br"
                   valueFormat="DD/MM/YYYY"
+                  styles={{ label: { color: 'var(--text-site)' } }}
                 />
 
-                {/* Novo Campo de Hora */}
+                {/* Horário */}
                 <TimeInput
                   label="Horário"
                   ref={timeInputRef}
                   required
                   value={form.horario}
                   onChange={(e) => setForm({ ...form, horario: e.target.value })}
+                  styles={{ label: { color: 'var(--text-site)' } }}
                   rightSection={
                     <ActionIcon variant="subtle" color="gray" onClick={() => timeInputRef.current.showPicker()}>
                       <IconClock size="1rem" stroke={1.5} />
@@ -113,25 +130,33 @@ const Agendar = () => {
                 />
               </Group>
 
+              {/* DESCRIÇÃO (Recuperada) */}
               <Textarea
-                label="Descrição (Opcional)"
-                placeholder="Ex: O ar condicionado não está gelando..."
+                label="Descrição do Problema"
+                placeholder="Conte-nos o que está acontecendo com seu aparelho..."
                 minRows={3}
                 value={form.descricao}
                 onChange={(e) => setForm({ ...form, descricao: e.target.value })}
+                styles={{ label: { color: 'var(--text-site)' } }}
               />
 
-              <Button 
+              {/* Botão Pílula */}
+              <button 
                 type="submit" 
-                fullWidth 
-                size="lg" 
-                radius="md" 
-                color="blue"
-                loading={loading}
-                leftSection={<IconCheck size={20} />}
+                className="btn-acao-pilula" 
+                style={{ width: '100%', height: '55px', marginTop: '20px' }}
+                disabled={loading || fetchingServices}
               >
-                Confirmar Agendamento
-              </Button>
+                <Group justify="center" gap="xs">
+                  {loading ? <Loader color="white" size="sm" /> : (
+                    <>
+                      <IconCheck size={20} />
+                      <span>Confirmar Agendamento</span>
+                    </>
+                  )}
+                </Group>
+                <div className="btn-indicator"></div>
+              </button>
             </Stack>
           </form>
         </Stack>
