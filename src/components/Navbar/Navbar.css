@@ -43,16 +43,22 @@
 
 .nav-links li { z-index: 2; }
 
-.nav-links li a {
+.nav-links li a,
+.nav-links li button {
     text-decoration: none;
     color: var(--text-site);
     font-weight: 600;
     padding: 12px 25px;
     display: block;
     transition: color 0.3s ease;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font: inherit;
 }
 
-.nav-links li a:hover { color: #fff; }
+.nav-links li a:hover,
+.nav-links li button:hover { color: #fff; }
 
 .indicator {
     position: absolute;
@@ -112,7 +118,8 @@
 
     .nav-links li { width: 100%; text-align: center; }
 
-    .nav-links li a { padding: 20px; font-size: 1.1rem; }
+    .nav-links li a,
+    .nav-links li button { padding: 20px; font-size: 1.1rem; }
 
     .indicator { display: none; }
 

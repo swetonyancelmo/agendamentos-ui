@@ -55,7 +55,6 @@ const Navbar = () => {
             <button
               onClick={handleLogout}
               onMouseEnter={handleMouseEnter}
-              style={{ background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', color: 'inherit', padding: 0 }}
             >
               Sair
             </button>
