@@ -6,6 +6,14 @@ function LandingPage() {
   const snowRef = useRef(null);
 
   useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const businessId = localStorage.getItem('businessId');
+      navigate(businessId ? '/dashboard-empresa' : '/dashboard-cliente', { replace: true });
+    }
+  }, [navigate]);
+
+  useEffect(() => {
     const container = snowRef.current;
     if (!container) return;
     const flakes = ["❄", "❅", "❆"];

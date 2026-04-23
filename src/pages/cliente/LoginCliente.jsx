@@ -33,7 +33,13 @@ function LoginCliente() {
         return;
       }
 
-      localStorage.setItem("token", data.token);
+      const jwtToken = data.token || data.accessToken || data.access_token;
+      if (!jwtToken) {
+        setErro("Erro ao obter token de autenticação.");
+        return;
+      }
+
+      localStorage.setItem("token", jwtToken);
       navigate("/dashboard-cliente");
     } catch {
       setErro("Erro de conexão. Verifique se o servidor está rodando.");

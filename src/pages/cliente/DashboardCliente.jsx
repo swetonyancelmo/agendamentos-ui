@@ -16,12 +16,19 @@ export default function DashboardCliente() {
     try {
       setLoading(true);
       const response = await api.get('/appointments/customer');
-      setAgendamentos(response.data);
+      setAgendamentos(Array.isArray(response.data) ? response.data : []);
     } catch (error) {
       console.error("Erro ao buscar seus agendamentos:", error);
     } finally {
       setLoading(false);
     }
+  };
+
+  const formatarPreco = (valor) => {
+    if (valor === null || valor === undefined) return '—';
+    const numero = Number(valor);
+    if (isNaN(numero)) return '—';
+    return `R$ ${numero.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
   };
 
   useEffect(() => {
@@ -98,7 +105,7 @@ export default function DashboardCliente() {
                   </Table.Td>
                   <Table.Td>{item.serviceName || 'Não informado'}</Table.Td>
                   <Table.Td>
-                    R$ {item.price ? Number(item.price).toFixed(2) : "0,00"}
+                    {formatarPreco(item.servicePrice)}
                   </Table.Td>
                   <Table.Td>
                     <Badge
