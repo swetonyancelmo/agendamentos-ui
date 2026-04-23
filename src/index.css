@@ -54,3 +54,76 @@ body {
   transition: background-color 0.4s ease;
 }
 
+<<<<<<< HEAD
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-site);
+  color: var(--text-site);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+#root {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+:root {
+  --bg-page: transparent;
+  --bg-card: #ffffff;
+  --bg-form: #E2E8F0;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6b7280;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-page: #1a1a2e;
+    --bg-card: #16213e;
+    --bg-form: #0f172a;
+    --text-primary: #ffffff;
+    --text-secondary: #94a3b8;
+  }
+}
+
+[data-mantine-color-scheme='dark'] {
+  /* 🌙 Modo Noturno "Meia-Noite" */
+  --bg-site: #0a111f;
+  --text-main: #f8fafc;
+  --text-sub: #94a3b8;
+  --bg-card: #141b2b;
+  --bg-form-side: #0f172a;
+  --input-bg: #1e293b;
+  --input-border: #1e2a41;
+  --btn-primary: #1971c2;
+}
+
+/* Container principal para o Login */
+.login-wrapper {
+  min-height: 100vh;
+  background-color: var(--bg-site);
+  transition: background-color 0.4s ease;
+}
+
+=======
+@import "tailwindcss";
+
+
+#layer base {
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
+>>>>>>> 400ca98 (feat Atualização do front do fluxo da empresa)

@@ -1,0 +1,83 @@
+import { createContext, useContext, useEffect, useState } from "react";
+
+const ThemeContext = createContext();
+
+export function ThemeProvider({ children }) {
+  const [darkMode, setDarkMode] = useState(() => {
+    return localStorage.getItem("darkMode") === "true";
+  });
+
+  const [fontSize, setFontSize] = useState(() => {
+    return localStorage.getItem("fontSize") || "normal";
+  });
+
+  const [snowEffect, setSnowEffect] = useState(() => {
+    return localStorage.getItem("snowEffect") === "true";
+  });
+
+  const [reduceMotion, setReduceMotion] = useState(() => {
+    return localStorage.getItem("reduceMotion") === "true";
+  });
+
+  const [highContrast, setHighContrast] = useState(() => {
+    return localStorage.getItem("highContrast") === "true";
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.toggle("dark", darkMode);
+    localStorage.setItem("darkMode", darkMode);
+  }, [darkMode]);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    root.classList.remove(
+      "text-small-global",
+      "text-normal-global",
+      "text-large-global"
+    );
+    root.classList.add(`text-${fontSize}-global`);
+    localStorage.setItem("fontSize", fontSize);
+  }, [fontSize]);
+
+  useEffect(() => {
+    localStorage.setItem("snowEffect", snowEffect);
+  }, [snowEffect]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("reduce-motion", reduceMotion);
+    localStorage.setItem("reduceMotion", reduceMotion);
+  }, [reduceMotion]);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("high-contrast", highContrast);
+    localStorage.setItem("highContrast", highContrast);
+  }, [highContrast]);
+
+  return (
+    <ThemeContext.Provider
+      value={{
+        darkMode,
+        setDarkMode,
+        fontSize,
+        setFontSize,
+        snowEffect,
+        setSnowEffect,
+        reduceMotion,
+        setReduceMotion,
+        highContrast,
+        setHighContrast
+      }}
+    >
+      {children}
+    </ThemeContext.Provider>
+  );
+}
+
+export function useTheme() {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error("useTheme deve ser usado dentro de um ThemeProvider");
+  }
+  return context;
+}
