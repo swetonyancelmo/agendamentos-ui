@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 
 // Componentes de layout
 import Navbar from '../components/Navbar/Navbar.jsx';
@@ -23,7 +23,6 @@ import Agendar from '../pages/cliente/Agendar.jsx';
 import LoginEmpresa from '../pages/empresa/LoginEmpresa.jsx';
 import CadastroEmpresa from '../pages/empresa/CadastroEmpresa.jsx';
 import DashboardEmpresa from '../pages/empresa/DashboardEmpresa.jsx';
-import Clientes from '../pages/empresa/Clientes.jsx';
 import Servicos from '../pages/empresa/Servicos.jsx';
 import CriarAgendamento from '../pages/empresa/CriarAgendamento.jsx';
 import ConfirmarAgendamentos from '../pages/empresa/ConfirmarAgendamentos.jsx';
@@ -37,9 +36,18 @@ const ROTAS_LOGIN = [
 ];
 
 const ROTAS_EMPRESA = [
-  '/dashboard-empresa', '/empresa/clientes', '/empresa/servicos',
+  '/dashboard-empresa', '/empresa/servicos',
   '/empresa/criar-agendamento', '/empresa/confirmar',
 ];
+
+function ProtectedRouteEmpresa({ children }) {
+  const token = localStorage.getItem('token');
+  const businessId = localStorage.getItem('businessId');
+  if (!token || !businessId) {
+    return <Navigate to="/login-empresa" replace />;
+  }
+  return children;
+}
 
 function GerenciadorNavbar() {
   const location = useLocation();
@@ -99,11 +107,10 @@ function AppRoutes({ exibirNeve, setExibirNeve }) {
         />
 
         {/* Empresa autenticada */}
-        <Route path="/dashboard-empresa" element={<DashboardEmpresa />} />
-        <Route path="/empresa/clientes" element={<Clientes />} />
-        <Route path="/empresa/servicos" element={<Servicos />} />
-        <Route path="/empresa/criar-agendamento" element={<CriarAgendamento />} />
-        <Route path="/empresa/confirmar" element={<ConfirmarAgendamentos />} />
+        <Route path="/dashboard-empresa" element={<ProtectedRouteEmpresa><DashboardEmpresa /></ProtectedRouteEmpresa>} />
+        <Route path="/empresa/servicos" element={<ProtectedRouteEmpresa><Servicos /></ProtectedRouteEmpresa>} />
+        <Route path="/empresa/criar-agendamento" element={<ProtectedRouteEmpresa><CriarAgendamento /></ProtectedRouteEmpresa>} />
+        <Route path="/empresa/confirmar" element={<ProtectedRouteEmpresa><ConfirmarAgendamentos /></ProtectedRouteEmpresa>} />
       </Routes>
 
       <GerenciadorFooter />

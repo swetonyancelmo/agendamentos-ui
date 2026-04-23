@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const inputClass =
-  "w-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-lg px-3 py-2.5 text-sm placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition";
+  "w-full border border-slate-200 bg-white text-slate-800 rounded-lg px-3 py-2.5 text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition";
 
 function ModalServicos({ save, close }) {
   const [form, setForm] = useState({
@@ -40,14 +40,14 @@ function ModalServicos({ save, close }) {
       onClick={close}
     >
       <div
-        className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl w-full max-w-md shadow-xl"
+        className="bg-white border border-slate-200 rounded-xl w-full max-w-md shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 dark:border-slate-800">
-          <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-200">Novo Serviço</h2>
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
+          <h2 className="text-sm font-semibold text-slate-800">Novo Serviço</h2>
           <button
             onClick={close}
-            className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors cursor-pointer"
+            className="text-slate-600 hover:text-slate-600 transition-colors cursor-pointer"
           >
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -57,13 +57,13 @@ function ModalServicos({ save, close }) {
 
         <div className="px-6 py-5 flex flex-col gap-4">
           <div>
-            <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Nome do serviço *</label>
+            <label className="block text-xs font-medium text-slate-700 mb-1.5">Nome do serviço *</label>
             <input type="text" name="serviceName" placeholder="Ex: Instalação de ar condicionado"
               className={inputClass} value={form.serviceName} onChange={handleChange} />
           </div>
 
           <div>
-            <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Descrição</label>
+            <label className="block text-xs font-medium text-slate-700 mb-1.5">Descrição</label>
             <textarea name="description" placeholder="Descreva o serviço"
               className={`${inputClass} resize-none`} rows={3}
               value={form.description} onChange={handleChange} />
@@ -71,22 +71,22 @@ function ModalServicos({ save, close }) {
 
           <div className="grid grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Preço (R$) *</label>
+              <label className="block text-xs font-medium text-slate-700 mb-1.5">Preço (R$) *</label>
               <input type="number" name="price" placeholder="120"
                 className={inputClass} value={form.price} onChange={handleChange} />
             </div>
             <div>
-              <label className="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1.5">Duração (min) *</label>
+              <label className="block text-xs font-medium text-slate-700 mb-1.5">Duração (min) *</label>
               <input type="number" name="durationInMinutes" placeholder="60"
                 className={inputClass} value={form.durationInMinutes} onChange={handleChange} />
             </div>
           </div>
         </div>
 
-        <div className="flex justify-end gap-2 px-6 py-4 border-t border-slate-100 dark:border-slate-800">
+        <div className="flex justify-end gap-2 px-6 py-4 border-t border-slate-100">
           <button
             onClick={close}
-            className="px-4 py-2 text-sm font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-lg transition-colors cursor-pointer"
+            className="px-4 py-2 text-sm font-medium text-slate-600 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors cursor-pointer"
           >
             Cancelar
           </button>

@@ -2,7 +2,7 @@ import CalendarioAgendamento from "../../components/empresa/CalendarioAgendament
 
 function CriarAgendamento() {
   return (
-    <main id="main-content" className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-28 pb-16 transition-colors">
+    <main id="main-content" className="min-h-screen bg-slate-50 pt-28 pb-16 transition-colors">
       <CalendarioAgendamento />
     </main>
   );

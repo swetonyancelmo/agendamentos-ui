@@ -50,9 +50,9 @@ function Grafico() {
   }, []);
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 mt-4 w-full">
+    <div className="bg-white border border-slate-200 rounded-xl p-6 mt-4 w-full">
       <div className="mb-5">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-600">
           Agendamentos da Semana
         </h2>
       </div>
@@ -65,8 +65,8 @@ function Grafico() {
         <ResponsiveContainer width="100%" height={280}>
           <LineChart data={data}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-            <XAxis dataKey="name" tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
-            <YAxis allowDecimals={false} tick={{ fontSize: 12, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
+            <XAxis dataKey="name" tick={{ fontSize: 12, fill: "#475569" }} axisLine={false} tickLine={false} />
+            <YAxis allowDecimals={false} tick={{ fontSize: 12, fill: "#475569" }} axisLine={false} tickLine={false} />
             <Tooltip contentStyle={{ borderRadius: "8px", border: "1px solid #e2e8f0", fontSize: "13px" }} />
             <Line type="monotone" dataKey="confirmados" stroke="#2563eb" strokeWidth={2} dot={{ r: 3, fill: "#2563eb" }} name="Confirmados" />
             <Line type="monotone" dataKey="pendentes" stroke="#f59e0b" strokeWidth={2} dot={{ r: 3, fill: "#f59e0b" }} name="Pendentes" />
@@ -75,10 +75,10 @@ function Grafico() {
       )}
 
       <div className="flex items-center gap-5 mt-4">
-        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+        <span className="flex items-center gap-1.5 text-xs text-slate-700">
           <span className="w-2.5 h-2.5 rounded-full bg-blue-600" /> Confirmados
         </span>
-        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+        <span className="flex items-center gap-1.5 text-xs text-slate-700">
           <span className="w-2.5 h-2.5 rounded-full bg-amber-500" /> Pendentes
         </span>
       </div>

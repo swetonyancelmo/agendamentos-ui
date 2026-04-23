@@ -82,9 +82,9 @@ function GraficoPizza() {
   }, [periodo, todosAgendamentos]);
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 mt-4">
+    <div className="bg-white border border-slate-200 rounded-xl p-6 mt-4">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-5">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-600">
           Status dos Agendamentos
         </h2>
         <div className="flex flex-wrap gap-1.5">
@@ -95,7 +95,7 @@ function GraficoPizza() {
               className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all cursor-pointer
                 ${periodo === p.value
                   ? "bg-blue-600 text-white"
-                  : "bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700"
+                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                 }`}
             >
               {p.label}
@@ -109,7 +109,7 @@ function GraficoPizza() {
           <div className="w-6 h-6 border-2 border-slate-200 border-t-blue-500 rounded-full animate-spin" />
         </div>
       ) : data.length === 0 ? (
-        <div className="flex justify-center items-center h-[280px] text-slate-400 text-sm">
+        <div className="flex justify-center items-center h-[280px] text-slate-600 text-sm">
           Nenhum agendamento neste período
         </div>
       ) : (

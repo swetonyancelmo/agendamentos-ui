@@ -57,13 +57,13 @@ function Servicos() {
   );
 
   return (
-    <main id="main-content" className="min-h-screen bg-slate-50 dark:bg-slate-950">
+    <main id="main-content" className="min-h-screen bg-slate-50">
       <div className="max-w-5xl mx-auto px-5 pt-28 pb-16">
 
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-xl font-bold text-slate-800 dark:text-slate-100">Serviços</h1>
-            <p className="text-sm text-slate-400 dark:text-slate-500 mt-0.5">Gerencie os serviços oferecidos</p>
+            <h1 className="text-xl font-bold text-slate-800">Serviços</h1>
+            <p className="text-sm text-slate-600 mt-0.5">Gerencie os serviços oferecidos</p>
           </div>
           <button
             onClick={() => setShowModal(true)}
@@ -82,7 +82,7 @@ function Servicos() {
             placeholder="Pesquisar serviços..."
             value={busca}
             onChange={(e) => setBusca(e.target.value)}
-            className="w-full px-4 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-slate-800 dark:text-slate-200"
+            className="w-full px-4 py-2.5 bg-white border border-slate-200 rounded-lg text-sm placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition text-slate-800"
           />
         </div>
 
@@ -91,32 +91,29 @@ function Servicos() {
             <div className="w-6 h-6 border-2 border-slate-200 border-t-blue-500 rounded-full animate-spin" />
           </div>
         ) : servicesFiltrados.length === 0 ? (
-          <div className="bg-white dark:bg-slate-900 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-16 text-center">
-            <p className="text-sm text-slate-400">Nenhum serviço disponível</p>
+          <div className="bg-white border border-dashed border-slate-200 rounded-xl p-16 text-center">
+            <p className="text-sm text-slate-600">Nenhum serviço disponível</p>
           </div>
         ) : (
-          <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+          <div className="bg-white border border-slate-200 rounded-xl overflow-hidden">
             <table className="w-full text-left">
-              <thead className="border-b border-slate-100 dark:border-slate-800">
+              <thead className="border-b border-slate-100">
                 <tr>
-                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">Nome</th>
-                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">Preço</th>
-                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">Duração</th>
-                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 text-right">Ações</th>
+                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-600">Nome</th>
+                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-600">Descrição</th>
+                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-600">Preço</th>
+                  <th className="px-5 py-3.5 text-xs font-semibold uppercase tracking-widest text-slate-600">Duração</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
+              <tbody className="divide-y divide-slate-50">
                 {servicesFiltrados.map((s) => (
-                  <tr key={s.id} className="hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors">
-                    <td className="px-5 py-4 text-sm font-medium text-slate-800 dark:text-slate-200">{s.serviceName}</td>
-                    <td className="px-5 py-4 text-sm text-blue-600 dark:text-blue-400 font-medium">
+                  <tr key={s.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="px-5 py-4 text-sm font-medium text-slate-800">{s.serviceName}</td>
+                    <td className="px-5 py-4 text-sm text-slate-700">{s.description || "—"}</td>
+                    <td className="px-5 py-4 text-sm text-blue-600 font-medium">
                       R$ {Number(s.price).toFixed(2)}
                     </td>
-                    <td className="px-5 py-4 text-sm text-slate-500 dark:text-slate-400">{s.durationInMinutes} min</td>
-                    <td className="px-5 py-4 text-right">
-                      <button className="text-xs text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors mr-4 cursor-pointer">Editar</button>
-                      <button className="text-xs text-slate-500 hover:text-red-600 dark:hover:text-red-400 transition-colors cursor-pointer">Excluir</button>
-                    </td>
+                    <td className="px-5 py-4 text-sm text-slate-700">{s.durationInMinutes} min</td>
                   </tr>
                 ))}
               </tbody>

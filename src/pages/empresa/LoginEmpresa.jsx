@@ -36,8 +36,14 @@ function LoginEmpresa() {
       localStorage.setItem("token", data.token);
 
       const payload = JSON.parse(atob(data.token.split(".")[1]));
-      if (payload.businessId) {
-        localStorage.setItem("businessId", payload.businessId);
+      const businessId = payload.userId;
+
+      if (businessId) {
+        localStorage.setItem("businessId", businessId);
+      } else {
+        setErro("Não foi possível identificar o ID da empresa no token. Contate o suporte.");
+        localStorage.removeItem("token");
+        return;
       }
 
       navigate("/dashboard-empresa");
@@ -73,7 +79,7 @@ function LoginEmpresa() {
           </div>
 
           <h1 className="text-2xl font-bold text-gray-800 text-center mb-2">Acesso Empresa</h1>
-          <p className="text-sm text-gray-500 text-center mb-8">
+          <p className="text-sm text-gray-700 text-center mb-8">
             Entre com suas credenciais para acessar o painel
           </p>
 
@@ -124,7 +130,7 @@ function LoginEmpresa() {
               <span className="absolute inset-0 bg-linear-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
             </button>
 
-            <p className="text-center text-sm text-gray-500 mt-2">
+            <p className="text-center text-sm text-gray-700 mt-2">
               Não tem uma conta?{" "}
               <Link to="/cadastro-empresa" className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200">
                 Cadastre-se aqui
@@ -133,11 +139,11 @@ function LoginEmpresa() {
 
             <div className="flex items-center gap-3 my-1">
               <div className="flex-1 h-px bg-gray-200" />
-              <span className="text-xs text-gray-400">ou</span>
+              <span className="text-xs text-gray-600">ou</span>
               <div className="flex-1 h-px bg-gray-200" />
             </div>
 
-            <p className="text-center text-sm text-gray-500">
+            <p className="text-center text-sm text-gray-700">
               É um cliente?{" "}
               <Link to="/login-cliente" className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200">
                 Acesse aqui

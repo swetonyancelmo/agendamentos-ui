@@ -1,23 +1,20 @@
 import {
   Container, Card, Title, Text, Switch, Stack,
-  Group, Divider, ThemeIcon, Box, useMantineColorScheme
+  Group, Divider, ThemeIcon, Box
 } from '@mantine/core';
 import {
-  IconMoonStars, IconSun, IconBellRinging,
+  IconBellRinging,
   IconUserCircle, IconLayout
 } from '@tabler/icons-react';
 
 const Configuracoes = ({ neveAtiva, setNeveAtiva }) => {
-  const { colorScheme, setColorScheme } = useMantineColorScheme();
-  const dark = colorScheme === 'dark';
-
   return (
     <Container size="sm" py="xl" style={{ marginTop: '80px', minHeight: '80vh' }}>
       <Card shadow="xl" padding="xl" radius="lg" withBorder>
         <Stack gap="xl">
           <Group justify="space-between">
             <Box>
-              <Title order={2} c={dark ? 'blue.4' : '#003366'}>Configurações</Title>
+              <Title order={2} c="#003366">Configurações</Title>
               <Text size="sm" c="dimmed">Personalize sua experiência na Mais Climatização</Text>
             </Box>
             <ThemeIcon size="xl" radius="md" variant="light" color="blue">
@@ -27,30 +24,14 @@ const Configuracoes = ({ neveAtiva, setNeveAtiva }) => {
 
           <Divider />
 
-          <section>
-            <Group mb="xs">
-              <IconLayout size={20} color={dark ? '#4dabf7' : '#003366'} />
-              <Text fw={700}>Visual e Interface</Text>
-            </Group>
+          {setNeveAtiva && (
+            <section>
+              <Group mb="xs">
+                <IconLayout size={20} color="#003366" />
+                <Text fw={700}>Visual e Interface</Text>
+              </Group>
 
-            <Stack gap="md" mt="md">
-              <Card withBorder radius="md" p="md">
-                <Group justify="space-between">
-                  <Box>
-                    <Text fw={600} size="sm">Modo Noturno</Text>
-                    <Text size="xs" c="dimmed">Alterne entre o visual claro e escuro</Text>
-                  </Box>
-                  <Switch
-                    size="lg"
-                    checked={dark}
-                    onChange={(event) => setColorScheme(event.currentTarget.checked ? 'dark' : 'light')}
-                    onLabel={<IconSun size={16} stroke={2.5} color="yellow" />}
-                    offLabel={<IconMoonStars size={16} stroke={2.5} color="blue" />}
-                  />
-                </Group>
-              </Card>
-
-              {setNeveAtiva && (
+              <Stack gap="md" mt="md">
                 <Card withBorder radius="md" p="md">
                   <Group justify="space-between">
                     <Box>
@@ -65,13 +46,13 @@ const Configuracoes = ({ neveAtiva, setNeveAtiva }) => {
                     />
                   </Group>
                 </Card>
-              )}
-            </Stack>
-          </section>
+              </Stack>
+            </section>
+          )}
 
           <section>
             <Group mb="xs">
-              <IconBellRinging size={20} color={dark ? '#4dabf7' : '#003366'} />
+              <IconBellRinging size={20} color="#003366" />
               <Text fw={700}>Notificações</Text>
             </Group>
             <Stack gap="sm">

@@ -37,9 +37,6 @@
     border-radius: 50px;
 }
 
-.dark .nav-links {
-    background-color: rgba(255, 255, 255, 0.06);
-}
 
 .nav-links li { z-index: 2; }
 

@@ -146,7 +146,7 @@ function LoginCliente() {
             </button>
           </form>
 
-          <p className="text-center text-sm text-gray-500 mt-4">
+          <p className="text-center text-sm text-gray-700 mt-4">
             Não tem uma conta?{" "}
             <Link to="/cadastro-cliente" className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200">
               Cadastre-se aqui
@@ -155,11 +155,11 @@ function LoginCliente() {
 
           <div className="flex items-center gap-3 my-3">
             <div className="flex-1 h-px bg-gray-200" />
-            <span className="text-xs text-gray-400">ou</span>
+            <span className="text-xs text-gray-600">ou</span>
             <div className="flex-1 h-px bg-gray-200" />
           </div>
 
-          <p className="text-center text-sm text-gray-500">
+          <p className="text-center text-sm text-gray-700">
             É uma empresa?{" "}
             <Link to="/login-empresa" className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200">
               Acesse aqui

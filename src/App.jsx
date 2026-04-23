@@ -17,7 +17,7 @@ function App() {
 
   return (
     <ThemeProvider>
-      <MantineProvider theme={theme} defaultColorScheme="light">
+      <MantineProvider theme={theme} forceColorScheme="light">
         <BrowserRouter>
           <AppRoutes exibirNeve={exibirNeve} setExibirNeve={setExibirNeve} />
         </BrowserRouter>

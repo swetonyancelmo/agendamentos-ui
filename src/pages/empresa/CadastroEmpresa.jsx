@@ -96,7 +96,7 @@ function CadastroEmpresa() {
           </div>
 
           <h1 className="text-2xl font-bold text-gray-800 text-center mb-1">Cadastro de Empresa</h1>
-          <p className="text-sm text-gray-500 text-center mb-6">Preencha os dados para criar sua conta</p>
+          <p className="text-sm text-gray-700 text-center mb-6">Preencha os dados para criar sua conta</p>
 
           <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full max-w-sm mx-auto">
             <div className="flex flex-col gap-1">
@@ -166,7 +166,7 @@ function CadastroEmpresa() {
               <span className="absolute inset-0 bg-linear-to-r from-blue-600 to-blue-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
             </button>
 
-            <p className="text-center text-sm text-gray-500 mt-1">
+            <p className="text-center text-sm text-gray-700 mt-1">
               Já tem uma conta?{" "}
               <Link to="/login-empresa" className="text-blue-700 font-semibold hover:text-blue-950 transition-colors duration-200">
                 Faça login aqui

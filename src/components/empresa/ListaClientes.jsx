@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
 const STATUS_STYLES = {
-  CONFIRMED: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400",
-  PENDING:   "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-400",
-  CANCELLED: "bg-red-50 text-red-700 dark:bg-red-900/30 dark:text-red-400",
-  COMPLETED: "bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-400",
-  REJECTED:  "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-400",
+  CONFIRMED: "bg-blue-50 text-blue-700",
+  PENDING:   "bg-amber-50 text-amber-700",
+  CANCELLED: "bg-red-50 text-red-700",
+  COMPLETED: "bg-green-50 text-green-700",
+  REJECTED:  "bg-slate-100 text-slate-600",
 };
 
 const STATUS_LABELS = {
@@ -56,31 +56,31 @@ function ListaClientes() {
   }
 
   return (
-    <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl mt-4 overflow-hidden">
-      <div className="px-6 py-5 border-b border-slate-100 dark:border-slate-800">
-        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500">
+    <div className="bg-white border border-slate-200 rounded-xl mt-4 overflow-hidden">
+      <div className="px-6 py-5 border-b border-slate-100">
+        <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-600">
           Agendamentos por Serviço
         </h2>
       </div>
 
       {agendamentos.length === 0 ? (
-        <p className="text-center text-slate-400 text-sm py-10">Nenhum agendamento encontrado</p>
+        <p className="text-center text-slate-600 text-sm py-10">Nenhum agendamento encontrado</p>
       ) : (
-        <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100 dark:divide-slate-800">
+        <div className="grid md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-slate-100">
           {agendamentos.map((agendamento) => (
             <div
               key={agendamento.id}
-              className="flex items-start justify-between gap-3 px-6 py-4 hover:bg-slate-50 dark:hover:bg-slate-800/40 transition-colors"
+              className="flex items-start justify-between gap-3 px-6 py-4 hover:bg-slate-50 transition-colors"
             >
               <div className="flex-1 min-w-0">
-                <p className="text-sm font-medium text-slate-800 dark:text-slate-200 truncate">
+                <p className="text-sm font-medium text-slate-800 truncate">
                   {agendamento.serviceName}
                 </p>
-                <p className="text-xs text-slate-400 mt-1">
+                <p className="text-xs text-slate-600 mt-1">
                   {formatarData(agendamento.appointmentDate)} · {agendamento.startTime} – {agendamento.endTime}
                 </p>
               </div>
-              <span className={`flex-shrink-0 px-2.5 py-0.5 rounded-md text-xs font-medium ${STATUS_STYLES[agendamento.status] ?? "bg-slate-100 text-slate-500"}`}>
+              <span className={`flex-shrink-0 px-2.5 py-0.5 rounded-md text-xs font-medium ${STATUS_STYLES[agendamento.status] ?? "bg-slate-100 text-slate-700"}`}>
                 {STATUS_LABELS[agendamento.status] ?? agendamento.status}
               </span>
             </div>

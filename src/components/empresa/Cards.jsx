@@ -31,9 +31,9 @@ function Cards() {
   }, []);
 
   const cards = [
-    { label: "Confirmados", value: totals.confirmados, color: "text-blue-600 dark:text-blue-400" },
-    { label: "Pendentes",   value: totals.pendentes,   color: "text-amber-500 dark:text-amber-400" },
-    { label: "Total",       value: totals.total,        color: "text-slate-700 dark:text-slate-300" },
+    { label: "Confirmados", value: totals.confirmados, color: "text-blue-600" },
+    { label: "Pendentes",   value: totals.pendentes,   color: "text-amber-500" },
+    { label: "Total",       value: totals.total,        color: "text-slate-700" },
   ];
 
   return (
@@ -41,9 +41,9 @@ function Cards() {
       {cards.map((card) => (
         <div
           key={card.label}
-          className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 text-center"
+          className="bg-white border border-slate-200 rounded-xl p-6 text-center"
         >
-          <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-3">
+          <p className="text-xs font-semibold uppercase tracking-widest text-slate-600 mb-3">
             {card.label}
           </p>
           <p className={`text-4xl font-bold ${card.color}`}>
