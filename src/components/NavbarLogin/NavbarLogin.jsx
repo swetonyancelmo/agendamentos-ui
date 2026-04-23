@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import Logo from '../../assets/logo1.png';
 
-function Navbar() {
+function NavbarLogin() {
   const navigate = useNavigate();
   const snowRef = useRef(null);
 
@@ -18,7 +18,7 @@ function Navbar() {
         left: Math.random() * 100 + "%",
         top: Math.random() * 100 + "%",
         fontSize: 10 + Math.random() * 14 + "px",
-        color: "rgba(100,150,220,0.45)",
+        color: "rgba(148, 163, 184, 0.4)", // Slate 400 with opacity
         pointerEvents: "none",
         animation: `snowdrift ${7 + Math.random() * 9}s linear ${Math.random() * 5}s infinite`,
       });
@@ -35,131 +35,39 @@ function Navbar() {
           85%  { opacity: 0.6; }
           100% { transform: translateY(120px) rotate(200deg); opacity: 0; }
         }
-
-        .nb-wrap {
-          background: #d6e8f7;
-          position: relative;
-          overflow: hidden;
-        }
-
-        /* ── faixa central com largura máxima ── */
-        .nb-inner {
-          position: relative;
-          z-index: 5;
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          max-width: 1200px;       /* centraliza em telas grandes */
-          margin: 0 auto;          /* margem automática dos lados  */
-          padding: 14px 32px;
-          background: rgba(255,255,255,0.45);
-          border-bottom: 1px solid rgba(255,255,255,0.6);
-        }
-
-        .nb-entrar:hover  { background: rgba(255,255,255,0.95) !important; }
-        .nb-cadastrar:hover { background: #1d3e8f !important; }
-
-        /* ── Dark mode ── */
-        @media (prefers-color-scheme: dark) {
-          .nb-wrap   { background: #0d1f3c !important; }
-          .nb-inner  {
-            background: rgba(10,24,56,0.7) !important;
-            border-color: rgba(100,150,220,0.15) !important;
-          }
-          .nb-name   { color: #c8daf5 !important; }
-          .nb-sub    { color: #5d90e0 !important; }
-          .nb-entrar {
-            background: rgba(40,80,160,0.3) !important;
-            color: #8ab8f0 !important;
-            border-color: rgba(100,160,240,0.4) !important;
-          }
-          .nb-entrar:hover { background: rgba(60,110,200,0.5) !important; }
-        }
-
-        /* ── Mobile ── */
-        @media (max-width: 480px) {
-          .nb-inner     { padding: 12px 16px; }
-          .nb-logo-img  { height: 36px !important; }
-          .nb-entrar,
-          .nb-cadastrar { padding: 9px 16px; font-size: 13px; }
-        }
       `}</style>
-
-      <div className="nb-wrap">
-        {/* Flocos de neve */}
-        <div
-          ref={snowRef}
-          style={{ position: "absolute", inset: 0, pointerEvents: "none", zIndex: 0 }}
-        />
-
-        {/* Conteúdo centralizado com max-width */}
-        <div className="nb-inner">
-
-          {/* Logo */}
-          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-            <img
+      
+      <div className="relative w-full bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors z-50">
+        <div ref={snowRef} className="absolute inset-0 pointer-events-none z-0 overflow-hidden" />
+        
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+             <img
               src={Logo}
               alt="Logo Mais Climatização"
-              className="nb-logo-img"
-              style={{ height: 44, objectFit: "contain" }}
+              className="h-10 sm:h-12 object-contain cursor-pointer"
+              onClick={() => navigate("/")}
             />
-            <div style={{ lineHeight: 1.15 }}>
-              <div
-                className="nb-name"
-                style={{ fontSize: 18, fontWeight: 800, color: "#1a3a6e", letterSpacing: 1 }}
-              >
-                
-              </div>
-              <div
-                className="nb-sub"
-                style={{ fontSize: 8, color: "#3b6fd4", letterSpacing: 3 }}
-              >
-                
-              </div>
-            </div>
           </div>
-
-          {/* Botões */}
-          <div style={{ display: "flex", gap: 10 }}>
-            <button
-              className="nb-entrar"
-              onClick={() => navigate("/seleção")}
-              style={{
-                padding: "10px 26px",
-                background: "rgba(255,255,255,0.7)",
-                color: "#1a3a6e",
-                border: "1.5px solid rgba(37,80,167,0.3)",
-                borderRadius: 24,
-                fontSize: 14,
-                fontWeight: 700,
-                cursor: "pointer",
-              }}
+          
+          <div className="flex items-center gap-3">
+             <button
+              onClick={() => navigate("/selecao")}
+              className="px-5 py-2 text-sm font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors cursor-pointer"
             >
               Entrar
             </button>
-
             <button
-              className="nb-cadastrar"
-              onClick={() => navigate("/seleção")}
-              style={{
-                padding: "10px 26px",
-                background: "#2550a7",
-                color: "#fff",
-                border: "none",
-                borderRadius: 24,
-                fontSize: 14,
-                fontWeight: 700,
-                cursor: "pointer",
-              }}
+              onClick={() => navigate("/selecao")}
+              className="px-5 py-2 text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-colors cursor-pointer shadow-sm"
             >
               Cadastrar
             </button>
           </div>
-
         </div>
       </div>
     </>
   );
 }
 
-export default Navbar;
+export default NavbarLogin;

@@ -61,7 +61,7 @@ const WelcomeCard = () => {
               {servicoSelecionado.detalhes.map((d, i) => <List.Item key={i}>{d}</List.Item>)}
             </List>
 
-            <button className="btn-acao-pilula" style={{ width: '100%', marginTop: '20px' }} onClick={() => navigate('/agenda')}>
+            <button className="btn-acao-pilula" style={{ width: '100%', marginTop: '20px' }} onClick={() => navigate('/agendar')}>
               <span>Agendar Agora</span>
               <div className="btn-indicator"></div>
             </button>
@@ -73,7 +73,7 @@ const WelcomeCard = () => {
         <div className="card-boas-vindas" style={{ width: '100%', maxWidth: '600px' }}>
           <h1>Bem-vindo ao Mais Climatização</h1>
           <p>Olá, Abelardo! Monitore e controle o clima do seu ambiente de forma inteligente e eficiente.</p>
-          <button className="btn-acao-pilula" onClick={() => navigate('/dashboard')}>
+          <button className="btn-acao-pilula" onClick={() => navigate('/dashboard-cliente')}>
             <span>Explorar minha agenda</span>
             <div className="btn-indicator"></div>
           </button>
@@ -108,7 +108,7 @@ const WelcomeCard = () => {
                   Detalhes
                 </button>
 
-                <button className="btn-acao-pilula" onClick={() => navigate('/agenda')} style={{ padding: '8px 15px', height: '45px' }}>
+                <button className="btn-acao-pilula" onClick={() => navigate('/agendar')} style={{ padding: '8px 15px', height: '45px' }}>
                   <span style={{ fontSize: '14px' }}>Agendar</span>
                   <div className="btn-indicator"></div>
                 </button>
@@ -118,7 +118,7 @@ const WelcomeCard = () => {
         </SimpleGrid>
 
         <Box ta="center" mt="60px" style={{ display: 'flex', justifyContent: 'center' }}>
-           <button className="btn-acao-pilula" style={{ width: '300px' }} onClick={() => navigate('/agenda')}>
+           <button className="btn-acao-pilula" style={{ width: '300px' }} onClick={() => navigate('/agendar')}>
              <span>Ver todos os serviços</span>
              <div className="btn-indicator"></div>
            </button>

@@ -2,52 +2,39 @@
     text-align: center;
     z-index: 10;
     padding: 40px;
-    /* Usa a variável de fundo de card que criamos */
-    background: var(--card-bg); 
-    backdrop-filter: blur(8px); 
-    border-radius: 25px;
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
     border: 1px solid var(--card-border);
     max-width: 700px;
-    transition: all 0.4s ease;
+    transition: all 0.3s ease;
 }
 
 .card-boas-vindas h1 {
-    /* 🔵 MUDANÇA: Agora segue a cor dinâmica (Azul claro no Dark / Marinho no Light) */
-    color: var(--text-clima-claro); 
-    font-size: 38px;
-    margin-bottom: 15px;
+    color: var(--text-clima-claro);
+    font-size: 36px;
+    margin-bottom: 14px;
 }
 
 .card-boas-vindas p {
-    /* ⚪ MUDANÇA: Segue a cor de texto do tema */
-    color: var(--text-site);
-    font-size: 18px;
-    margin-bottom: 25px;
+    color: var(--text-secondary);
+    font-size: 17px;
+    margin-bottom: 24px;
 }
 
 .btn-acao-pilula {
     position: relative;
-    background-color: #003366; /* Cor base do botão */
+    background-color: #1d4ed8;
     color: white;
     border: none;
-    padding: 16px 45px;
+    padding: 14px 42px;
     border-radius: 50px;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: 600;
+    font-size: 15px;
     cursor: pointer;
     overflow: hidden;
     transition: all 0.3s ease;
     z-index: 1;
-}
-
-/* No modo noturno, podemos deixar o botão com um azul um pouco mais vivo se quiser */
-[data-mantine-color-scheme='dark'] .btn-acao-pilula {
-    background-color: #1971c2;
-}
-
-.btn-acao-pilula span {
-    position: relative;
-    z-index: 3;
 }
 
 .btn-indicator {
@@ -56,11 +43,16 @@
     left: 50%;
     width: 0;
     height: 0;
-    background: linear-gradient(135deg, #007bff, #002bec);
+    background: linear-gradient(135deg, #2563eb, #1e40af);
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 2;
+}
+
+.btn-acao-pilula span {
+    position: relative;
+    z-index: 3;
 }
 
 .btn-acao-pilula:hover .btn-indicator {
@@ -69,30 +61,16 @@
 }
 
 .btn-acao-pilula:hover {
-    box-shadow: 0 10px 25px rgba(0, 43, 236, 0.4);
-    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(29, 78, 216, 0.3);
+    transform: scale(1.04);
 }
 
-/* --- SEÇÃO DE SERVIÇOS (TITULOS E TEXTOS) --- */
-
-/* Força o título da seção de serviços a usar a cor de destaque */
-.mantine-Title-root {
-    color: var(--text-clima-claro) !important;
-    transition: color 0.4s ease;
-}
-
-/* Garante que os títulos dentro dos cards de serviço também fiquem azuis */
-[data-mantine-color-scheme='dark'] .mantine-Card-root .mantine-Text-root[data-fw="700"] {
-    color: var(--text-clima-claro) !important;
-}
-
-/* Estilo para mobile no Welcome Card */
 @media (max-width: 768px) {
     .card-boas-vindas {
-        padding: 30px 20px;
-        margin: 0 15px;
+        padding: 28px 18px;
+        margin: 0 14px;
     }
     .card-boas-vindas h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
 }

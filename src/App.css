@@ -1,46 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html, body {
-    margin: 0 !important;
-    padding: 0 !important;
-    overflow-x: hidden;
-}
-
-
-:root {
-  --bg-site: #d0e7ff;
-  --text-site: #003366;
-  --card-bg: #ffffff;
-  --card-border: #e9ecef;
-
-  --nav-bg: rgba(255, 255, 255, 0.6);
-  --nav-border: rgba(0, 0, 0, 0.05);
-}
-
-[data-mantine-color-scheme='dark'] {
-  --bg-site: #0a111f;
-  --text-site: #C1C2C5;
-  --card-bg: #141b2b;
-  --card-border: #1e2a41;
-
-  --nav-bg: rgba(20, 27, 43, 0.8);
-  --nav-border: rgba(255, 255, 255, 0.05);
- --text-clima-claro: #339af0;
-}
-[data-mantine-color-scheme='light'] {
-  /* No modo claro, usamos um azul um pouco mais forte para dar leitura */
-  --text-clima-claro: #007bff;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden;
 }
 
 .app-container {
   min-height: 100vh;
   background-color: var(--bg-site);
   color: var(--text-site);
-
-  /* 🔥 evita conteúdo ficar atrás da navbar */
-  padding-top: 0px;
 }
