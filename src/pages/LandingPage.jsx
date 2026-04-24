@@ -82,7 +82,7 @@ function LandingPage() {
            </div>
            
            <div className="flex flex-wrap justify-center gap-8 md:gap-16">
-             {[["500+", "Clientes"], ["5 anos", "Experiência"], ["98%", "Satisfação"]].map(([n, l]) => (
+             {[["200+", "Clientes"], ["+5 anos", "Experiência"], ["98%", "Satisfação"]].map(([n, l]) => (
                <div key={l} className="text-center">
                  <div className="text-3xl font-extrabold text-slate-900">{n}</div>
                  <div className="text-xs text-slate-700 uppercase tracking-wide mt-1">{l}</div>

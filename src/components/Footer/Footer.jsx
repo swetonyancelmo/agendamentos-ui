@@ -14,7 +14,7 @@ export default function Footer() {
                 Especialistas em conforto térmico. Instalação, manutenção e reparos com a qualidade que você merece.
               </Text>
               <Group gap="xs" mt="md">
-                <ActionIcon size="lg" variant="subtle" color="blue" component="a" href="https://www.instagram.com/abelardovanzoff" target="_blank">
+                <ActionIcon size="lg" variant="subtle" color="blue" component="a" href="#" target="_blank">
                   <IconBrandInstagram size={24} />
                 </ActionIcon>
                 <ActionIcon size="lg" variant="subtle" color="green" component="a" href="https://wa.me/55991999999" target="_blank">
@@ -39,7 +39,7 @@ export default function Footer() {
             <Stack gap="sm">
               <Group gap="xs">
                 <IconPhone size={18} color="#228be6" />
-                <Text size="sm" c="dimmed">(00) 0000-0000</Text>
+                <Text size="sm" c="dimmed">(81) 99308-2594</Text>
               </Group>
               <Group gap="xs">
                 <IconMail size={18} color="#228be6" />
